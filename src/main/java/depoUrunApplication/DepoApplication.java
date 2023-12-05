@@ -9,7 +9,7 @@ import java.util.Scanner;
 //Bu proje 4 class tan olumaktadir. 1)DepoApplication    2)Urun    3)DepoYonetimi    4)ProjeInfo
 
 
-public class DepoApplication extends DepoYonetimi {    //Burada DepoApplication sinifindan DepoYonetimi sinifina IS - A relationship kurduk
+public class DepoApplication extends DepoYonetimiYeni {    //Burada DepoApplication sinifindan DepoYonetimi sinifina IS - A relationship kurduk
                                                        //Boylece herhangi bir obje olmaksizin DepoYonetimi sinifindaki metodlara ulasabildik
     //------------------------------------------------------------------------------------------------------------------
    // 3) DepoApplication Sinifi
@@ -46,7 +46,7 @@ public class DepoApplication extends DepoYonetimi {    //Burada DepoApplication 
 
             System.out.println(" Lutfen istediginiz islemin numarasini seciniz  " +
                     "\n1) Urun Tanimlama   ==> 1   \n2) Urun Listeleme   ==> 2   \n3) Depo Urun Girisi ==> 3 " +
-                    "    \n4) Urunu Rafa Koyma ==> 4   \n5) Depo Urun Cikisi ==> 5    \n0) CIKIS ");
+                    "    \n4) Urunu Rafa Koyma ==> 4   \n5) Depo Urun Cikisi ==> 5    \n6) Urun Sil   \n0) CIKIS ");
 
             System.out.println("Islem No :  " );
 
@@ -54,18 +54,12 @@ public class DepoApplication extends DepoYonetimi {    //Burada DepoApplication 
             try {                                  // Islem numarasi icin veri dogrulama
                 select = input.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Lütfen geçerli bir sayı giriniz1" +
-                        "");
+                System.out.println("Lütfen o ile 6 arasinda geçerli bir sayı giriniz");
 
                 input.next(); // Geçersiz girişi atlamak için kullanılır.
                 continue; // Döngünün başına dön.
             }
             
-            
-             /*try-catch Kullanımı: Kullanıcının sayı dışında bir giriş yapması durumunda
-             InputMismatchException hatası oluşabilir.
-             Bu durumu ele almak için try-catch blokları kullandik,
-             kullanıcıdan beklenmeyen bir girdi geldiğinde programın çökmesini önledi.*/
 
 
         System.out.println("-----------------------------------------------------------------------------------------");
@@ -81,25 +75,18 @@ public class DepoApplication extends DepoYonetimi {    //Burada DepoApplication 
             switch(select) {
 
                 case 1 :
-
                     urunTanimla();
-
                    break;
 
                 case 2 :
-
                    urunListele ();
-
                    break;
 
                 case 3 :
-
                   urunMiktariGiris();
-
                     break;
 
                 case 4 :
-
                 urunRafaKoy();
                     break;
 
@@ -107,8 +94,11 @@ public class DepoApplication extends DepoYonetimi {    //Burada DepoApplication 
                  urunCikisi();
                     break;
 
-                case 0 :
+                case 6:
+                    urunSilme();
+                    break;
 
+                case 0 :
                     System.out.println("Iyi Gunler Dileriz");
                     break;
 
